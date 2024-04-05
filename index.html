@@ -15,10 +15,13 @@
 	<title>Lista de Tareas</title>
 	<style>
 		* {
-			font-family: "Comic Sans MS", cursive, sans-serif;
+			font-family: "Comic Sans MS", sans-serif;
 			font-size: 14px;
 		}
 
+		.btns{
+			min-width: 70px;
+		}
 	
 	</style>
 </head>
@@ -99,8 +102,8 @@
 		// Función para renderizar una tarea en la lista de tareas pendientes
 		function renderTask(task) {
 			var listItem = document.createElement('div');
-			listItem.className = 'border rounded p-2 mt-1 clearfix';
-			listItem.innerHTML = '<div class="task-description d-flex justify-content-center align-items-center"><input type="checkbox" class="form-check-input"><label class="form-check-label ms-2 text-break fw-lighter" id="lbl' + task.id + '">' + task.description + ' - ' + task.date + '</label><div class=""> <a class="btn btn-sm ms-2" data-bs-toggle="collapse" href="#textarea' + task.id + '" role="button" aria-expanded="false" aria-controls="textarea' + task.id + '"><i class="fa-regular fa-edit text-primary"></i></a><button class="delete-btn btn btn-sm ms-2"><i class="fa-regular fa-trash-can text-danger"></i></button></div></div><div class="collapse w-100" id="textarea' + task.id + '"> <textarea id="inputtxt' + task.id + '" class="form-control form-control-sm" rows="2">' + task.description + '</textarea><div class="d-grid gap-1 col-12 mx-auto"><button class="btn btn-sm btn-primary mt-1" onclick="SaveDesc(\'inputtxt' + task.id + '\', \'' + task.id + '\', \'lbl' + task.id + '\')"><i class="fa-regular fa-floppy-disk"></i></button></div></div>';
+			listItem.className = 'border rounded p-2 mt-1 clearfix task-description d-flex justify-content-center align-items-center';
+			listItem.innerHTML = '<input type="checkbox" class="form-check-input"><label class="form-check-label ms-3 text-break fw-lighter" id="lbl' + task.id + '">' + task.description + '</label><div class="btns"> <a class="btn btn-sm ms-2" data-bs-toggle="collapse" href="#textarea' + task.id + '" role="button" aria-expanded="false" aria-controls="textarea' + task.id + '"><i class="fa-regular fa-edit text-primary"></i></a><button class="delete-btn btn btn-sm"><i class="fa-regular fa-trash-can text-danger"></i></button></div></div><div class="collapse w-100" id="textarea' + task.id + '"> <textarea id="inputtxt' + task.id + '" class="form-control form-control-sm" rows="2">' + task.description + '</textarea><div class="d-grid gap-1 col-12 mx-auto"><button class="btn btn-sm btn-primary mt-1" onclick="SaveDesc(\'inputtxt' + task.id + '\', \'' + task.id + '\', \'lbl' + task.id + '\')"><i class="fa-regular fa-floppy-disk"></i></button></div>';
 
 			var deleteBtn = listItem.querySelector('.delete-btn');
 			deleteBtn.addEventListener('click', function () {
